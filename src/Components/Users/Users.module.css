@@ -1,0 +1,16 @@
+.userItem {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 15px;
+  align-items: center;
+  background-color: white;
+  max-width: 80%;
+  margin: 0 auto 15px auto;
+}
+.userItem > div {
+  padding: 10px;
+}
+.avatar {
+  width: 50px;
+}
