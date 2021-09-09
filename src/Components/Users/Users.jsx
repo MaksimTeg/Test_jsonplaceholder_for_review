@@ -38,28 +38,3 @@ let Users = (props) => {
 };
 
 export default Users;
-/*
- <Row gutter={16}>
-      <Col span={8}>
-        <Card
-          style={{ width: 300 }}
-          actions={[
-            <SettingOutlined key="setting" />,
-            <EditOutlined key={u.id} />,
-            <EllipsisOutlined key="ellipsis" />
-          ]}
-        >
-          <Meta
-            avatar={
-              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-            }
-            <NavLink to={"/posts/" + u.id}>
-            title={u.title}
-                      </NavLink>
-            description={u.body} 
-          />
-        </Card>
-      </Col>
-    </Row>
-
-  */

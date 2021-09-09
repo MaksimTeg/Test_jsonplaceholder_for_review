@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Field, reduxForm } from "redux-form";
+import { login } from "../../Redux/auth-reduser";
 import s from "./login.module.css";
 
 const LoginForms = (props) => {
@@ -51,7 +53,9 @@ const LoginForms = (props) => {
 const LoginReduxForms = reduxForm({ form: "login" })(LoginForms);
 
 let Login = (props) => {
-  const onSubmit = (formData) => {};
+  const onSubmit = (formData) => {
+    props.login(formData.email, formData.password, formData.rememberMe);
+  };
   return (
     <div className={s.login}>
       <h2>Login</h2>
@@ -59,4 +63,4 @@ let Login = (props) => {
     </div>
   );
 };
-export default Login;
+export default connect(null, { login })(Login);

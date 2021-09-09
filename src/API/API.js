@@ -7,14 +7,6 @@ export const usersAPI = {
   getUsers: async () => {
     const response = await instance.get(`posts/`);
     return response.data;
-  },
-  getProfileData(userId) {
-    console.warn("Obsolete method.Please profileAPI object.");
-    return profileAPI.getProfileData(userId);
-  },
-  getCommentsData(userId) {
-    console.warn("Obsolete method.Please commentsAPI object.");
-    return commentsAPI.getCommentsData(userId);
   }
 };
 export const profileAPI = {
@@ -29,6 +21,29 @@ export const profileAPI = {
 export const commentsAPI = {
   async getCommentsData(userId) {
     const response = await instance.get(`posts/${userId}/comments`);
+    return response.data;
+  }
+};
+
+const instanceAuth = axios.create({
+  baseURL: "https://reqres.in/api/",
+  token: ""
+});
+
+export const authAPI = {
+  me() {
+    return instanceAuth.get(`api/login`);
+  },
+  async login(email, password, rememberMe = false) {
+    const response = await instanceAuth.post(`api/login`, {
+      email,
+      password,
+      rememberMe
+    });
+    return response.data;
+  },
+  async logout() {
+    const response = await instanceAuth.delete(`api/login`);
     return response.data;
   }
 };
