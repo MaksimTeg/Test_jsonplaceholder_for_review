@@ -36,7 +36,7 @@ export const getAuthUserData = () => async (dispatch) => {
 };
 export const login = (email, password, rememberMe) => async (dispatch) => {
   let response = await authAPI.login(email, password, rememberMe);
-  if (response.data.token === "QpwL5tke4Pnpja7X4") {
+  if (response.data.token === !null) {
     dispatch(getAuthUserData());
   } else {
     let message =

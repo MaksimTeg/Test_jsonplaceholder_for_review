@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import Spinner from "../Commons/Spinner/Spinner";
 import { Comments } from "./Comments";
 import "antd/dist/antd.css";
+import NewPost from "./AddPost/NewPost"
 import { PageHeader, Button, Descriptions } from "antd";
 
 const Profile = (props) => {
   if (!props.post) {
     return <Spinner />;
   }
-  let [light, setLight] = useState(false);
+  const newLocal = false;
+  let [light, setLight] = useState(newLocal);
 
   const setOff = () => setLight(false);
   const setOn = () => setLight(true);
@@ -44,7 +46,7 @@ const Profile = (props) => {
         {fillColor === true ? (
           <Comments post={props.post} status={props.status} />
         ) : (
-          "NONE"
+          <NewPost />
         )}
       </div>
     </div>

@@ -14,31 +14,27 @@ export const profileAPI = {
     const response = await instance.get(`posts/${userId}`);
     return response.data;
   },
+  pushProfile (post) {
+        return instance.put(`posts/`, { post: post });
+    },
   getStatus(userId) {
     return instance.get(`posts/${userId}/comments`);
   }
 };
-export const commentsAPI = {
-  async getCommentsData(userId) {
-    const response = await instance.get(`posts/${userId}/comments`);
-    return response.data;
-  }
-};
+
 
 const instanceAuth = axios.create({
-  baseURL: "https://reqres.in/api/",
-  token: ""
+  baseURL: "https://reqres.in/api/"
 });
 
 export const authAPI = {
   me() {
     return instanceAuth.get(`api/login`);
   },
-  async login(email, password, rememberMe = false) {
+  async login(email, password) {
     const response = await instanceAuth.post(`api/login`, {
       email,
-      password,
-      rememberMe
+      password
     });
     return response.data;
   },

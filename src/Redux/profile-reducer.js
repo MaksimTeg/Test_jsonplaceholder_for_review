@@ -5,7 +5,7 @@ const SET_STATUS = "SET_STATUS";
 
 let initialState = {
   post: [],
-  status: []
+  status: [],
 };
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -35,7 +35,12 @@ export const getPostsProfile = (userId) => {
     });
   };
 };
-
+export const newPost = (id, title, body) => async (dispatch) => {
+  let response = await profileAPI.pushProfile(id, title, body)
+  if (response.data !== null) {
+    dispatch(setPostsProfile(id, title, body));
+  }
+}
 export const getStatus = (userId) => async (dispatch) => {
   let response = await profileAPI.getStatus(userId);
   dispatch(setStatus(response.data));

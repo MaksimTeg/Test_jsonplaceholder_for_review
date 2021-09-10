@@ -9,9 +9,10 @@ export const Comments = (props) => {
     return <Spinner />;
   }
   return (
-    <div className={s.avatar}>
+    <div className={s.avatar} key={props.id}>
       {props.status.map((u) => (
         <PageHeader
+          key={props.id}
           className="site-page-header"
           title={"Name: " + u.name}
           src={
@@ -22,8 +23,8 @@ export const Comments = (props) => {
           alt="logo1"
           subTitle={"postId: " + u.postId}
         >
-          <Descriptions size="small" column={1}>
-            <Descriptions.Item label="Email:">{u.email}</Descriptions.Item>
+          <Descriptions size="small" column={1} key={props.id}>
+            <Descriptions.Item label="Email">{u.email}</Descriptions.Item>
             <Descriptions.Item label="Body">{u.body}</Descriptions.Item>
           </Descriptions>
         </PageHeader>
